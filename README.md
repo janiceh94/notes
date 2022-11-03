@@ -1,5 +1,8 @@
 Notes project following Scrimba React course with Bob Ziroll
 
+![Screen Shot 2022-11-03 at 4 38 35 PM](https://user-images.githubusercontent.com/93102224/199855024-522cea79-f48f-4cf7-b629-5d6c2b3dec38.png)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
