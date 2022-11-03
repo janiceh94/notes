@@ -10,6 +10,8 @@ import "react-mde/lib/styles/css/react-mde-all.css";
 
 export default function App() {
     const [notes, setNotes] = useState(
+        // lazy state initialization
+        // stop 'notes' state so it doesn't reach into localstorage on every single re-render of the App component
         () => JSON.parse(localStorage.getItem("notes")) || [])
     const [currentNoteId, setCurrentNoteId] = useState(
         // make sure notes at index 0 exists before trying to access id
