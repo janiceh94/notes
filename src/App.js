@@ -36,12 +36,33 @@ export default function App() {
     }   
   
     function updateNote(text) {
-        setNotes(oldNotes => oldNotes.map(oldNote => {
-            return oldNote.id === currentNoteId
-                ? { ...oldNote, body: text }
-                : oldNote
-        }))
+        setNotes(oldNotes => {
+            const newArray = []
+            for(let i = 0; i < oldNotes.length; i ++){
+                const oldNote = oldNotes[i]
+                // if id matches
+                if(oldNote.id === currentNoteId){
+                    // put the updated note a the beginning of the new array
+                    newArray.unshift({
+                        ...oldNote,
+                        body: text
+                    })
+                } else {
+                    // push old note to the end of the new array
+                    newArray.push(oldNote)
+                }
+            }
+            return newArray
+        })
     }
+
+    // function updateNote(text) {
+    //     setNotes(oldNotes => oldNotes.map(oldNote => {
+    //         return oldNote.id === currentNoteId
+    //             ? { ...oldNote, body: text }
+    //             : oldNote
+    //     }))
+    // }
   
     function findCurrentNote() {
         return notes.find(note => {
