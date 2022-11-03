@@ -1,8 +1,9 @@
 import React, { useState } from "react"
 import ReactMde from "react-mde"
 import Showdown from "showdown"
+import "./Editor.css"
 
-const Editor = ({currentNote, updateNote}) => {
+export default function Editor({ currentNote, updateNote }) {
     const [selectedTab, setSelectedTab] = useState("write")
 
     const converter = new Showdown.Converter({
@@ -10,7 +11,7 @@ const Editor = ({currentNote, updateNote}) => {
         simplifiedAutoLink: true,
         strikethrough: true,
         tasklists: true,
-    })
+    })  
 
     return (
         <section className="pane editor">
@@ -19,7 +20,7 @@ const Editor = ({currentNote, updateNote}) => {
                 onChange={updateNote}
                 selectedTab={selectedTab}
                 onTabChange={setSelectedTab}
-                generateMarkdownPreview={(markdown) => 
+                generateMarkdownPreview={(markdown) =>
                     Promise.resolve(converter.makeHtml(markdown))
                 }
                 minEditorHeight={80}
@@ -28,6 +29,4 @@ const Editor = ({currentNote, updateNote}) => {
         </section>
     )
 }
-
-export default Editor
 
