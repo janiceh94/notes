@@ -56,6 +56,15 @@ export default function App() {
         })
     }
   
+    function deleteNote(event, noteId){
+        // stops an event from bubbling or propagatng up the DOM tree
+        event.stopPropagation()
+        // filter takes a callback function, boolean
+            // whether current item iterating from original item should be included in the new array
+        // for each note, note id property does not equal note id we are trying to delete
+        setNotes(oldNotes => oldNotes.filter(note => note.id !== noteId))
+    }
+
     function findCurrentNote() {
         return notes.find(note => {
             return note.id === currentNoteId
@@ -77,6 +86,7 @@ export default function App() {
                 currentNote={findCurrentNote()}
                 setCurrentNoteId={setCurrentNoteId}
                 newNote={createNewNote}
+                deleteNote={deleteNote}
             />
             {
                 currentNoteId && 
