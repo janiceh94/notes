@@ -1,16 +1,25 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Editor from "./components/Editor/Editor"
 import Sidebar from "./components/Sidebar/Sidebar"
 import { data } from "./data"
+// split plane for user to manipulate
 import Split from "react-split"
+// create random id
 import {nanoid} from "nanoid"
 import "react-mde/lib/styles/css/react-mde-all.css";
 
 export default function App() {
-    const [notes, setNotes] = useState([])
+    const [notes, setNotes] = useState(
+        JSON.parse(localStorage.getItem("notes")) || [])
     const [currentNoteId, setCurrentNoteId] = useState(
+        // make sure notes at index 0 exists before trying to access id
         (notes[0] && notes[0].id) || ""
     )
+
+    // sync note with localstorage
+    useEffect(() => {
+        localStorage.setItem("notes", JSON.stringify(notes))
+    }, [notes])
   
     function createNewNote() {
         const newNote = {
