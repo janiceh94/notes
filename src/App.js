@@ -55,21 +55,13 @@ export default function App() {
             return newArray
         })
     }
-
-    // function updateNote(text) {
-    //     setNotes(oldNotes => oldNotes.map(oldNote => {
-    //         return oldNote.id === currentNoteId
-    //             ? { ...oldNote, body: text }
-    //             : oldNote
-    //     }))
-    // }
   
     function findCurrentNote() {
         return notes.find(note => {
             return note.id === currentNoteId
         }) || notes[0]
     }
-  
+    
     return (
         <main>
         {
