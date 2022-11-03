@@ -10,7 +10,7 @@ import "react-mde/lib/styles/css/react-mde-all.css";
 
 export default function App() {
     const [notes, setNotes] = useState(
-        JSON.parse(localStorage.getItem("notes")) || [])
+        () => JSON.parse(localStorage.getItem("notes")) || [])
     const [currentNoteId, setCurrentNoteId] = useState(
         // make sure notes at index 0 exists before trying to access id
         (notes[0] && notes[0].id) || ""
