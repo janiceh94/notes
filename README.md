@@ -1,4 +1,4 @@
-# Notes project following Scrimba React course with Bob Ziroll
+Notes project following Scrimba React course with Bob Ziroll
 
 # Getting Started with Create React App
 
